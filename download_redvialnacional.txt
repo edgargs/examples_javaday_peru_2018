@@ -1,0 +1,4 @@
+http://www.geoidep.gob.pe/
+
+curl -o red_vial_nacional_dic16.csv -d "service=WFS&version=1.0.0&request=GetFeature&typeName=MTC_gis:red_vial_nacional_dic16&outputFormat=csv" http://mtcgeo2.mtc.gob.pe:8080/geoserver/MTG_gis/wfs
+
