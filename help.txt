@@ -1,0 +1,15 @@
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS
+
+psql.exe -h dbpostgis.c2bchrbtgmoa.us-east-1.rds.amazonaws.com -U channels gis
+
+
+CREATE TABLE red_vial_nacional_dic16_01 (
+	Id SERIAL PRIMARY KEY,
+	cCodRuta VARCHAR(10),
+	Shape_text text,
+	Shape geography(MULTILINESTRING,4326)
+);
+
+https://postgis.net/docs/using_postgis_dbmanagement.html#PostGIS_Geography
+
+SELECT ST_GeometryFromText(Shape_textT, 4326) FROM red_vial_nacional_dic16_01;
