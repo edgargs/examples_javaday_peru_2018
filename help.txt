@@ -12,4 +12,15 @@ CREATE TABLE red_vial_nacional_dic16_01 (
 
 https://postgis.net/docs/using_postgis_dbmanagement.html#PostGIS_Geography
 
-SELECT ST_GeometryFromText(Shape_textT, 4326) FROM red_vial_nacional_dic16_01;
+SELECT ST_GeometryFromText(Shape_text, 4326) FROM red_vial_nacional_dic16_01;
+
+
+USE gis
+GO
+
+CREATE TABLE red_vial_nacional_dic16_01 (
+	Id INTEGER PRIMARY KEY,
+	cCodRuta VARCHAR(10),
+	the_geom_import VARCHAR(MAX),
+	the_geom geometry
+);
