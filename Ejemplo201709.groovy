@@ -12,19 +12,19 @@ String base = 'http://localhost:5050/'
   
   http.request(GET, TEXT ) { req ->
 
-  uri.path = '/api/v1'
-  /*uri.query = [user:sms_user,
-                   passwd:sms_passwd,
-                   cat:sms_cat,
-                   priority:1,
-                   to:sms_receives,
-                   text:sms_message]
-*/
-  response.success = { resp, reader ->
-      println "Content-Type: ${resp.headers.'Content-Type'}"
-      println reader.text
-      println "$resp.statusLine   Respond rec"
-  }
+    uri.path = '/api/v1'
+    /*uri.query = [user:sms_user,
+                    passwd:sms_passwd,
+                    cat:sms_cat,
+                    priority:1,
+                    to:sms_receives,
+                    text:sms_message]
+    */
+    response.success = { resp, reader ->
+        println "Content-Type: ${resp.headers.'Content-Type'}"
+        println reader.text
+        println "$resp.statusLine   Respond rec"
+    }
   }
   
   http.post(path: '/api/v1/1') {
@@ -38,11 +38,11 @@ String base = 'http://localhost:5050/'
   
     http.request(POST) { 
 
-  uri.path = '/api/v2/2'
+        uri.path = '/api/v2/2'
 
-  response.success = { resp, reader ->
-      println "Content-Type: ${resp.headers.'Content-Type'}"
-      println reader.text
-      println "$resp.statusLine   Respond rec"
-  }
-  }
+        response.success = { resp, reader ->
+            println "Content-Type: ${resp.headers.'Content-Type'}"
+            println reader.text
+            println "$resp.statusLine   Respond rec"
+        }
+    }

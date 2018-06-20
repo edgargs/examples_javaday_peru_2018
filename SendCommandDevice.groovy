@@ -45,7 +45,7 @@ void sendSMS (receive,message) {
                 }
                 inb.close();
 
-                println("Código de envio SMS: " + response.toString());                
+                println("Cï¿½digo de envio SMS: " + response.toString());                
             //}
         //}
 }
@@ -70,47 +70,25 @@ import groovyx.net.http.EncoderRegistry
 import static groovyx.net.http.Method.*
 import static groovyx.net.http.ContentType.*
 
-void sendSMS2 (receive,message) {
-        String sms_receives = receive //alertMessage.getSms_receives().replaceAll(";", ",");
-        String sms_message = message //alertMessage.getSms_message();
+void sendSMS2 (sms_receive,sms_message) {
+    
+    //http://192.168.1.2:81/sendmsg?user=1&passwd=Pass2017&cat=1&priority=1&to=987654321&text=Hola_Mundo
 
-        /*
-        SMS_SERVER_CAT    1
-        SMS_SERVER_PASSWD    5m52017
-        SMS_SERVER_URL    http://192.168.1.2:81/sendmsg
-        SMS_SERVER_USER    smsmatrix
-        */
-        String sms_cat = "1" //alertMessage.getSms_cat();
-        String sms_passwd = "5m52017" //alertMessage.getSms_passwd();
-        String sms_url = "http://192.168.1.2:81/sendmsg" //alertMessage.getSms_url();
-        String sms_user = "smsmatrix" //alertMessage.getSms_user();
-        
-                
-        String base = 'http://192.168.1.2:81'
-        def http = new groovyx.net.http.HTTPBuilder(base)
-        /*http.get(path : '/sendmsg',
-                contentType : TEXT,
-                query : [user:sms_user,
-                         passwd:sms_passwd,
-                         cat:sms_cat,
-                         priority:1,
-                         to:sms_receives,
-                         text:sms_message]
-                ) { 
-                resp, reader ->
-                
-                    println "response status: ${resp.statusLine}"
-                    System.out << reader
-                    println '--------------------'
-        }*/
-        http.request(GET, TEXT ) { req ->
+    String sms_cat = "1" //alertMessage.getSms_cat();
+    String sms_passwd = "Pass2017" //alertMessage.getSms_passwd();
+    String sms_user = "smsuser" //alertMessage.getSms_user();
+            
+    String base = 'http://192.168.1.2:81'
+    def http = new groovyx.net.http.HTTPBuilder(base)
+    
+    http.request(GET, TEXT ) { req ->
         
         uri.path = '/sendmsg'
         uri.query = [user:sms_user,
                          passwd:sms_passwd,
                          cat:sms_cat,
                          priority:1,
-                         to:sms_receives,
+                         to:sms_receive,
                          text:sms_message]
 
         response.success = { resp, reader ->
