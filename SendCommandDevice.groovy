@@ -2,7 +2,7 @@
 @Grab('com.xlson.groovycsv:groovycsv:1.1')
 import static com.xlson.groovycsv.CsvParser.parseCsv
 
-for(line in parseCsv(new FileReader('countries.csv'), separator: ',')) {
+for(line in parseCsv(new FileReader('devices.csv'), separator: ',')) {
     println "\nRecevive=$line.RECEIVE, Message=$line.MESSAGE"
     sendSMS2(line.RECEIVE,line.MESSAGE);
 }
